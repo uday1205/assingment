@@ -1,0 +1,170 @@
+Create table student(
+Id int  PRIMARY KEY AUTO_INCREMENT NOT NULL,
+Rollno bigint unique key,
+Name varchar(20),
+Branch varchar(20),
+);
+
+
+INSERT into student (Rollno,Name,Branch)VALUES
+(1,"Jay","Computer Science"),
+(2,"Suhani","Electronic and Com"),
+(3,"Kriti","Electronic and Com");
+
+
+Create table exam(
+Rollno bigint ,
+Foregien key(Rollno)refrences student(Rollno),
+S_code varchar(20),
+marks Bigint,
+P_code varchar(20)
+);
+
+
+
+insert into exam(Rollno,S_code,Marks,P_code)VALUES
+(1,"Cs11",50,"CS"),
+(1,"Cs12",60,"CS"),
+(2,"Ec101",66,"Ec"),
+(2,"Ec102",70,"Ec"),
+(3,"Ec101",45,"Ec"),
+(3,"Ec102",50,"Ec");
+
+
+CREATE TABLE info(
+FirstName varchar(20),
+LastName varchar(20),
+Address varchar(50),
+City varchar(20),
+Age int 
+);
+
+INSERT INTO info(FirstName,LastName,Address,City,Age)VALUES
+("Mickey","Mouse","123 Fantasy Way","Anaheim",73),
+("Bat","Man","321 Cavern Ave","Gotham",54),
+("Wonder","Women","987 Truth Way","Paradise",39),
+("Donald","Duck","555 Quack  Street","Mallard",65),
+("Bugs","Bunney","567 Carrot Street","Rascal",58),
+("Wiley","Coyote","999 Acme Way","anyon",61),
+("Cat","Women","234 Purrfect Street","Hairball",32),
+("Tweety","Bird","543","Itotltaw",28);
+
+
+CREATE DATABASE firm;
+
+CREATE TABLE Employee(
+Employee_id int PRIMARY KEY AUTO_INCREMENT NOT NULL,
+Firstname varchar(20),
+Lastname varchar(20),
+Salary bigint,
+JoiningDate varchar(50),
+Department varchar(20)
+
+);
+
+INSERT INTO employee(Employee_id,Firstname,Lastname,Salary,JoiningDate,Department) VALUES
+(1,"John","Abraham",1000000,"01-Jan-13 12.00.00 AM","Banking"),
+(2,"Micheal","Clarke",800000,"01-Jan-13 12.00.00 AM","Insurance"),
+(3,"Roy","Thomas",700000,"01-Feb-13 12.00.00 AM","Banking"),
+(4,"Tom","Jose",600000,"01-Feb-13 12.00.00 AM","Insurance"),
+(5,"Jerry","Pinto",650000,"01-Feb-13 12.00.00 AM","Insurance"),
+(6,"Philip","Mathew",750000,"01-Jan-13 12.00.00 AM","Services"),
+(7,"TestName1","123",650000,"01-Jan-13 12.00.00 AM","Services"),
+(8,"TestName2","Lname%",600000,"01-Feb-13 12.00.00 AM","Insurance");
+
+CREATE  TABLE Incentive(
+    employee_ref_id int,
+    FOREIGN KEY (employee_ref_id) REFERENCES employee(employee_id),
+    Incentive_date varchar(20),
+    Incentive_amount varchar(20)
+    );
+
+INSERT INTO incentive(employee_ref_id,Incentive_date,Incentive_amount)VALUES
+(1,"01-Feb-13",5000),
+(2,"01-Feb-13",3000),
+(3,"01-Feb-13",4000),
+(1,"01-Jan-13",4500),
+(2,"01-Jan-13",3500);
+
+SELECT * FROM employee where Firstname = 'Tom';
+
+SELECT Firstname,JoiningDate,Salary FROM employee;
+
+SELECT * 
+FROM employee 
+ORDER BY Firstname ASC, Salary DESC;
+
+SELECT * 
+FROM employee 
+WHERE Firstname LIKE 'J%';
+
+SELECT Department, MAX(Salary) AS Max_Salary 
+FROM employee 
+GROUP BY Department 
+ORDER BY Max_Salary ASC;
+
+SELECT e.First_name, i.Incentive_amount 
+FROM Employee e 
+JOIN Incentive i ON e.Employee_id = i.Employee_ref_id 
+WHERE i.Incentive_amount > 3000;
+
+CREATE TRIGGER y01 AFTER INSERT ON employee FOR EACH ROW
+INSERT INTO t01(tEmployee_id,tFirstname,tLastname,tsalary,tJoiningDate,tDepartment,action_performed)VALUES(Employee_id,Firstname,Lastname,salary,JoiningDate,Department,"Inserted DATA");
+
+CREATE TABLE t01(
+tEmployee_id  int,
+tFirstname varchar(20),
+tLastname varchar(20),
+tSalary int,
+tJoiningDate varchar(20),
+tDepartment varchar(20),
+ttime timestamp,
+action_performed varchar(20));
+
+
+CREATE TRIGGER y01 AFTER INSERT ON employee FOR EACH ROW
+INSERT INTO t01(tEmployee_id,tFirstname,tLastname,tsalary,tJoiningDate,tDepartment,action_performed)VALUES(NEW.Employee_id,NEW.Firstname,NEW.Lastname,NEW.salary,NEW.JoiningDate,NEW.Department,"Inserted DATA");
+
+
+
+CREATE DATABASE COMPANY;
+
+create table Salesperson(
+    Sno int PRIMARY KEY AUTO_INCREMENT NOT null ,
+    Sname varchar(20),
+    City varchar(20),
+    Comm decimal(20,10)
+    );
+
+insert into salesperson(Sno,Sname,city,COMM)VALUES
+(1001,"peel","London",.12),
+(1002,"serres","San jose",.13),
+(1004,"Motika","London",.11),
+(1007,"Rafkin","Barcelona",.15),
+(1003,"Axelrod","New York",.1);
+
+
+create table customer(
+CNM int PRIMARY KEY AUTO_INCREMENT not null,
+Cname varchar(20),
+City varchar(20),
+Rating bigint,
+Sno int,
+FOREIGN Key(Sno) REFERENCES salesperson(Sno));
+    
+    insert into customer(CNM,Cname,City,Rating,Sno)VALUES
+(201,"Hoffman","London",100,1001),
+(202,"Giovane","Roe",200,1003),
+(203,"Liu","San jose",300,1002),
+(204,"Grass","Barcelona",100,1002),
+(206,"Clemens","London",300,1007),
+(207,"Pereira","Roe",100,1004);
+
+SELECT Sname,City FROM salesperson WHERE City="London" && Comm>=0.12;
+
+SELECT * FROM salesperson WHERE City="Barcelona" OR City="London";
+
+SELECT * FROM salesperson WHERE Comm>0.10 && Comm<0.12;
+
+SELECT * FROM customer where  Rating>=100 OR city="Roe";
+
