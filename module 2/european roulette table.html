@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>European Roulette Table</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+        td, th {
+            border: 1px solid black;
+            text-align: center;
+            padding: 8px;
+        }
+        .red {
+            background-color: red;
+        }
+        .black {
+            background-color: black;
+            color: white;
+        }
+        .green {
+            background-color: green;
+            color: white;
+        }
+        .even, .odd, .to18, .to36 {
+            text-align: center;
+            background-color: lightgrey;
+        }
+        .empty {
+            border: none;
+        }
+    </style>
+</head>
+<body>
+    <h1>European Roulette</h1>
+    <table>
+        <tr>
+            <td class="green" rowspan="3">0</td>
+            <td class="red">3</td>
+            <td class="black">6</td>
+            <td class="red">9</td>
+            <td class="black">12</td>
+            <td class="red">15</td>
+            <td class="black">18</td>
+            <td class="red">21</td>
+            <td class="black">24</td>
+            <td class="red">27</td>
+            <td class="black">30</td>
+            <td class="red">33</td>
+            <td class="black">36</td>
+            <td rowspan="3" class="to1">2to1</td>
+        </tr>
+        <tr>
+            <td class="black">2</td>
+            <td class="red">5</td>
+            <td class="black">8</td>
+            <td class="red">11</td>
+            <td class="black">14</td>
+            <td class="red">17</td>
+            <td class="black">20</td>
+            <td class="red">23</td>
+            <td class="black">26</td>
+            <td class="red">29</td>
+            <td class="black">32</td>
+            <td class="red">35</td>
+        </tr>
+        <tr>
+            <td class="red">1</td>
+            <td class="black">4</td>
+            <td class="red">7</td>
+            <td class="black">10</td>
+            <td class="red">13</td>
+            <td class="black">16</td>
+            <td class="red">19</td>
+            <td class="black">22</td>
+            <td class="red">25</td>
+            <td class="black">28</td>
+            <td class="red">31</td>
+            <td class="black">34</td>
+        </tr>
+        <tr>
+            <td colspan="4" class="empty"></td>
+            <td colspan="4" class="even">EVEN</td>
+            <td colspan="4" class="odd">ODD</td>
+            <td colspan="4" class="empty"></td>
+        </tr>
+        <tr>
+            <td colspan="3" class="empty"></td>
+            <td colspan="3" class="to18">1to18</td>
+            <td colspan="6" class="empty"></td>
+            <td colspan="3" class="to36">19to36</td>
+            <td colspan="3" class="empty"></td>
+        </tr>
+        <tr>
+            <td colspan="6" class="empty"></td>
+            <td colspan="6" class="empty"></td>
+            <td colspan="6" class="empty"></td>
+        </tr>
+    </table>
+</body>
+</html>

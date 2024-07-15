@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dropdown List Example</title>
+</head>
+<body>
+    <h2>Select your favorite programming language:</h2>
+
+    <select id="programmingLanguages">
+        <option value="java">Java</option>
+        <option value="python">Python</option>
+        <option value="javascript">JavaScript</option>
+        <option value="cpp">C++</option>
+        <option value="php">PHP</option>
+    </select>
+
+    <p>You selected: <span id="selectedLanguage"></span></p>
+
+    <script>
+        // JavaScript to display the selected option
+        document.getElementById('programmingLanguages').addEventListener('change', function() {
+            var selectedOption = this.options[this.selectedIndex].text;
+            document.getElementById('selectedLanguage').textContent = selectedOption;
+        });
+    </script>
+</body>
+</html>

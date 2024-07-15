@@ -1,0 +1,28 @@
+/* General link styles */
+a {
+  color: #007bff; /* Default link color */
+  text-decoration: none; /* Remove underline by default */
+  transition: color 0.3s ease; /* Smooth transition for color change */
+}
+
+/* Link pseudo-classes */
+a:link {
+  /* Styles for unvisited links */
+  color: #007bff; /* Blue color for unvisited links */
+}
+
+a:visited {
+  /* Styles for visited links */
+  color: #6610f2; /* Purple color for visited links */
+}
+
+a:hover {
+  /* Styles for when mouse hovers over link */
+  color: #0056b3; /* Darker blue color on hover */
+  text-decoration: underline; /* Underline on hover */
+}
+
+a:active {
+  /* Styles for when link is clicked */
+  color: #0056b3; /* Darker blue color when active */
+}
